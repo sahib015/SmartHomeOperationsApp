@@ -3,11 +3,14 @@ import json
 import ssl
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
+import random
+import time
 
 def get_temperature():
     while True:
         try:
-            temp = float(input("Enter temperature value: "))
+            temp = random.randint(12,34)#float(input("Enter temperature value: "))
+            time.sleep(60)
             return temp
         except ValueError:
             print("Invalid temperature value. Please try again.")
