@@ -53,7 +53,7 @@ def run_server():
     
         # check if the sensor is valid
         if sensor_json["sensor_type"] != "known_sensor":
-            response = colored("Unknown sensor", "red", "on_yellow", ["bold", "underline"])
+            response = colored("Unknown sensor", "yellow", "on_red", ["bold", "underline"])
         else:
             # check if sensor is registered
             if sensor_json["sensor_id"] not in registered_sensors:
