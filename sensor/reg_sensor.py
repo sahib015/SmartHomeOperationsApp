@@ -16,7 +16,7 @@ def get_temperature():
 def getHumidity():
     while True:
         try:
-            humidity = random.randint(1,40)#float(input("Enter temperature value: "))
+            humidity = random.randint(1,100)#float(input("Enter temperature value: "))
             return humidity
         except ValueError:
             print("Invalid Humidity value. Please try again.")
