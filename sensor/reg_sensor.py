@@ -24,17 +24,11 @@ def getHumidity():
 def run_client():
     while True:
         try:
-            # Set DSCP Value = AF41
-            DSCP = 0x90
-            
             # Sensor Type
             sensor_type = "known_sensor" 
 
             # create a socket object
             s = socket.socket()
-
-            # set the TOS marking for the socket
-            s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
 
             # get local machine name
             host = socket.gethostname()
