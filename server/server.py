@@ -7,8 +7,12 @@ from termcolor import colored
 
 def run_server():
     try:
+         # Set DSCP Value = AF41
+        DSCP = 0x90
         # create a socket object
         s = socket.socket()
+        # set TOS field in the IP header of the network packet
+        s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
         
         # get local machine name
         host = socket.gethostname()
