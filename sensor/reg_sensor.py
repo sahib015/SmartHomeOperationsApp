@@ -13,6 +13,14 @@ def get_temperature():
             return temp
         except ValueError:
             print("Invalid temperature value. Please try again.")
+def getHumidity():
+    while True:
+        try:
+            humidity = random.randint(1,40)#float(input("Enter temperature value: "))
+            return humidity
+        except ValueError:
+            print("Invalid Humidity value. Please try again.")
+
 
 def run_client():
     while True:
@@ -40,16 +48,18 @@ def run_client():
 
             # define the sensor data
             temperature = get_temperature()
-            sensor_data = {
+            humidity =getHumidity()
+            tempHumidSensor_data = {
                 "sensor_type": sensor_type,
-                "sensor_name": "temperature_sensor",
-                "sensor_value": temperature,
-                "sensor_unit": "Celsius",
+                "sensor_name": "temperatureHumidity_sensor",
+                "sensor_tempValue": temperature,
+                "sensor_humidityValue": humidity,
+                "sensor_unit": "Celsius and %",
                 "sensor_id": "abc123" # new: add sensor id
             }
 
             # convert the sensor data to JSON format
-            sensor_json = json.dumps(sensor_data)
+            sensor_json = json.dumps(tempHumidSensor_data)
 
             # set up the encryption key and IV
             key = b'mysecretpassword'

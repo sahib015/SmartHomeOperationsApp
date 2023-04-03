@@ -61,12 +61,12 @@ def run_server():
                     response = colored("Sensor not registered", "blue")
                 else:
                     # check the sensor data and send the appropriate response
-                    if sensor_json["sensor_value"] > 30.0:
+                    if sensor_json["sensor_tempValue"] > 30.0 or sensor_json["sensor_humidityValue"] > 60.0:
                         response = colored("Turn on the AC", "yellow")
-                    elif sensor_json["sensor_value"] < 10.0:
+                    elif sensor_json["sensor_tempValue"] < 10. or sensor_json["sensor_humidityValue"] < 30.0:
                         response = colored("Turn on the heater", "yellow")
                     else:
-                        response = colored("Temperature is normal", "green")
+                        response = colored("Temperature and humidity of the room is normal", "green")
             print("Response to sensor:", response)
 
             # encrypt the server response using AES-CBC encryption
