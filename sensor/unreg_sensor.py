@@ -3,14 +3,22 @@ import json
 import ssl
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
+import random
 
 def get_temperature():
     while True:
         try:
-            temp = float(input("Enter temperature value: "))
-            return temp
+            temp = random.randint(1,40)#random temp reading from 1 degree to 40 degrees celcius
         except ValueError:
             print("Invalid temperature value. Please try again.")
+def getHumidity():
+    while True:
+        try:
+            humidity = random.randint(1,100)#random humidity reading from 1% to 100%
+            return humidity
+        except ValueError:
+            print("Invalid Humidity value. Please try again.")
+
 
 def run_client():
 
@@ -37,11 +45,13 @@ def run_client():
 
     # define the sensor data
     temperature = get_temperature()
+    humidity =getHumidity()
     sensor_data = {
         "sensor_type": sensor_type,
-        "sensor_name": "temperature_sensor",
-        "sensor_value": temperature,
-        "sensor_unit": "Celsius",
+        "sensor_name": "temperatureHumidity_sensor",
+        "sensor_tempValue": temperature,
+        "sensor_humidityValue": humidity,
+        "sensor_unit": "Celsius and %",
         "sensor_id": "xyz987" # new: add sensor id
     }
 
