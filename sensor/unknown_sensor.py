@@ -36,8 +36,8 @@ def run_client():
 
     while True:
         try:
-            # Set DSCP Value = AF41
-            DSCP = 0x90
+            # Set DSCP Value = AF32
+            DSCP = 0x70
             
             # Sensor Type
             sensor_type = "unknown_sensor" 

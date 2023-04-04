@@ -34,8 +34,8 @@ def getHumidity():
 def run_client():
     while True:
         try:
-            # Set DSCP Value = AF41
-            DSCP = 0x90
+            # Set DSCP Value = AF22
+            DSCP = 0x50
             
             # Sensor Type
             sensor_type = "known_sensor" 

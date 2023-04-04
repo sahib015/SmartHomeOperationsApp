@@ -10,7 +10,7 @@ from termcolor import colored
 def run_server():
     try:
          # Set DSCP Value = AF41
-        DSCP = 0x90
+        DSCP = 0xB8
         # create a socket object
         s = socket.socket()
         # set Type of Service (TOS) field in the IP header of the network packet
