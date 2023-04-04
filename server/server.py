@@ -5,13 +5,15 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from termcolor import colored
 
+#Method defining the server configurations to listen to incomming connections and send packets of information back to the sensor recieving data from  
+
 def run_server():
     try:
          # Set DSCP Value = AF41
         DSCP = 0x90
         # create a socket object
         s = socket.socket()
-        # set TOS field in the IP header of the network packet
+        # set Type of Service (TOS) field in the IP header of the network packet
         s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
         
         # get local machine name
@@ -25,8 +27,7 @@ def run_server():
     
         # listen for incoming connections
         s.listen(1)
-        print("Server is running on:", socket.gethostbyname(host), "port", port)
-    
+        print("Server is running on:", socket.gethostbyname(host), "port", port)# confirm incomming connection printed on terminal
         # define the registered sensor IDs
         registered_sensors = ["abc123", "def456", "ghi789"] 
     
@@ -64,7 +65,7 @@ def run_server():
                 if sensor_json["sensor_id"] not in registered_sensors:
                     response = colored("Sensor not registered", "blue")
                 else:
-                    # check the sensor data and send the appropriate response
+                    # check the sensor data and send the appropriate response to the relavant sensor 
                     if sensor_json["sensor_tempValue"] > 30.0 or sensor_json["sensor_humidityValue"] > 60.0:
                         response = colored("Turn on the AC", "yellow")
                     elif sensor_json["sensor_tempValue"] < 10. or sensor_json["sensor_humidityValue"] < 30.0:
@@ -89,4 +90,5 @@ def run_server():
     except socket.error as e:
         print(f"Socket error occurred: {e}")
 
+#Run the server. To note the server requires to be running before recieving any connections from the sensors
 run_server()

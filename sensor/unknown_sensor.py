@@ -6,23 +6,31 @@ from Crypto.Util.Padding import pad, unpad
 import random
 import time
 
+#Method to return the temperature value from the sensor to the server
+#The value is generated randomly using the random library
+
 def get_temperature():
     while True:
         try:
             # Get Temperature
-            temp = random.randint(1,40) 
+            temp = random.randint(1,40) #random temperature values between 1 and 40
             return temp
         except ValueError:
             print("Invalid temperature value. Please try again.")
+
+#Method to return the humidity value from the sensor to the server
+#The value is generated randomly using the random library
+
 def getHumidity():
     while True:
         try:
             #Get Humidity
-            humidity = random.randint(1,40)
+            humidity = random.randint(1,100)#random humidity % values between 1 and 100
             return humidity
         except ValueError:
             print("Invalid Humidity value. Please try again.")
 
+#Method defining the client ie temperature and humidity sensor that is unknown to the server
 def run_client():
 
     while True:
@@ -36,7 +44,7 @@ def run_client():
             # create a socket object
             s = socket.socket()
 
-            # set the TOS marking for the socket
+            # set the Type of Service (TOS) marking for the socket
             s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
 
             # get local machine name
@@ -55,8 +63,8 @@ def run_client():
             s.connect((host, port))
 
             # define the sensor data
-            temperature = get_temperature()
-            humidity = getHumidity()
+            temperature = get_temperature()#random temp value generated for get_temperature() method 
+            humidity = getHumidity()#random temp value generated for get_humidity() method 
             sensor_data = {
                 "sensor_type": sensor_type,
                 "sensor_name": "temperatureHumidity_sensor",
@@ -110,11 +118,12 @@ def run_client():
             # close the connection
             s.close()
                
-            # Interval for the update
+            # Time nterval for the update. For demonstration purposes it is set to 5 seconds
             time.sleep(5)
 
         except socket.error as e:
             print(f"Socket error occurred: {e}")
-            
+
+#Run the client           
 run_client()
 

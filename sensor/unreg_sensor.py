@@ -6,23 +6,30 @@ from Crypto.Util.Padding import pad, unpad
 import random
 import time
 
+#Method to return the temperature value from the sensor to the server
+#The value is generated randomly using the random library
 def get_temperature():
     while True:
         try:
             # Get Temperature
-            temp = random.randint(1,40) 
+            temp = random.randint(1,40) #random temperature values between 1 and 40
             return temp
         except ValueError:
             print("Invalid temperature value. Please try again.")
+
+#Method to return the humidity value from the sensor to the server
+#The value is generated randomly using the random library
+
 def getHumidity():
     while True:
         try:
             #Get Humidity
-            humidity = random.randint(1,40)
+            humidity = random.randint(1,100)#random humidity % values between 1 and 100
             return humidity
         except ValueError:
             print("Invalid Humidity value. Please try again.")
 
+#Method defining the client ie temperature and humidity sensor that is unregistered in the server
 def run_client():
     while True:
         try:
@@ -109,11 +116,12 @@ def run_client():
             # close the connection
             s.close()
        
-            # Interval for the update
+            #Time nterval for the update. For demonstration purposes it is set to 5 seconds
             time.sleep(5)
 
         except socket.error as e:
             print(f"Socket error occurred: {e}")
 
+#run the client method 
 run_client()
 
