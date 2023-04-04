@@ -83,7 +83,9 @@ def run_server():
         
             # close the connection
             client_socket.close()
-        
+            print(f"Connection with {addr} closed")
+
+
     except socket.error as e:
         print(f"Socket error occurred: {e}")
 
