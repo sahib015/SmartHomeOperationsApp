@@ -3,6 +3,7 @@ import json
 import ssl
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
+from termcolor import colored
 import random
 import time
 
@@ -97,7 +98,7 @@ def run_client():
 
             # receive the response from the server
             encrypted_response = s.recv(1024)
-            print("Received encrypted server response: ", encrypted_response)
+            print(colored("Received encrypted server response: ", "blue"), encrypted_response)
     
             # create a new AES cipher object for decrypting the response data
             decrypt_cipher = AES.new(key, AES.MODE_CBC, iv)
@@ -111,7 +112,7 @@ def run_client():
             # convert the response from bytes to string format
             response = unpadded_response.decode()
     
-            print("Decrypted Response from server: ", response)
+            print(colored("Decrypted Response from server: ", "blue"), response)
     
             # close the connection
             s.close()
