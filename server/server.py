@@ -46,12 +46,12 @@ def run_server():
     
             # receive the encrypted sensor data from the client
             encrypted_sensor_data = client_socket.recv(1024)
-            print("Received encrypted sensor data: ", encrypted_sensor_data)
+            print(colored("Received encrypted sensor data: ", "blue"), encrypted_sensor_data)
     
             # decrypt the sensor data using AES-CBC encryption
             decrypt_cipher = AES.new(key, AES.MODE_CBC, iv)
             sensor_data = unpad(decrypt_cipher.decrypt(encrypted_sensor_data), AES.block_size).decode()
-            print("Decrypted sensor data: ", sensor_data)
+            print(colored("Decrypted sensor data: ", "blue"), sensor_data)
     
             # parse the sensor data from JSON format
             sensor_json = json.loads(sensor_data)
@@ -62,7 +62,7 @@ def run_server():
             else:
                 # check if sensor is registered
                 if sensor_json["sensor_id"] not in registered_sensors:
-                    response = colored("Sensor not registered", "blue")
+                    response = colored("Sensor not registered", "yellow")
                 else:
                     # check the sensor data and send the appropriate response
                     if sensor_json["sensor_tempValue"] > 30.0 or sensor_json["sensor_humidityValue"] > 60.0:
@@ -71,7 +71,7 @@ def run_server():
                         response = colored("Turn on the heater", "yellow")
                     else:
                         response = colored("Temperature and humidity of the room is normal", "green")
-            print("Response to sensor:", response)
+            print(colored("Response to sensor:", "blue"), response)
 
             # encrypt the server response using AES-CBC encryption
             cipher = AES.new(key, AES.MODE_CBC, iv)
