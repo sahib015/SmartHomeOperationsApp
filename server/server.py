@@ -19,7 +19,7 @@ def handle_connection(client_socket, addr):
 
             # receive the encrypted sensor data from the client
             encrypted_sensor_data = client_socket.recv(1024)
-            print(colored("Received encrypted sensor data: ", "blue"), addr, "Data:", encrypted_sensor_data)
+            print(colored("Received encrypted sensor data: ", "blue"), "Session:", addr, "Data:", encrypted_sensor_data)
             
             # if the client's ACK packet is empty, close the connection
             if encrypted_sensor_data == b'':
@@ -29,7 +29,7 @@ def handle_connection(client_socket, addr):
             # decrypt the sensor data using AES-CBC encryption
             decrypt_cipher = AES.new(key, AES.MODE_CBC, iv)
             sensor_data = unpad(decrypt_cipher.decrypt(encrypted_sensor_data), AES.block_size).decode()
-            print(colored("Decrypted sensor data: ", "blue"), addr, "Data:", sensor_data)
+            print(colored("Decrypted sensor data: ", "blue"), "Session:", addr, "Data:", sensor_data)
 
             # parse the sensor data from JSON format
             sensor_json = json.loads(sensor_data)
