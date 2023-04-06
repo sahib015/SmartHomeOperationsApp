@@ -1,3 +1,4 @@
+#import libraries
 import socket
 import json
 import ssl
@@ -9,6 +10,7 @@ import time
 
 #Method to return the temperature value from the sensor to the server
 #The value is generated randomly using the random library
+#@return- temp
 def get_temperature():
     while True:
         try:
@@ -17,10 +19,9 @@ def get_temperature():
         except ValueError:
             print("Invalid temperature value. Please try again.")
 
-#
 # Method to return the humidity value from the sensor to the server
 #The value is generated randomly using the random library
-#     
+# @return- humidity        
        
 def getHumidity():
     while True:
@@ -35,7 +36,7 @@ def getHumidity():
 def run_client():
     while True:
         try:
-            # define the sensor data
+            #sensor information
 
             sensor_type = "unknown_sensor"
         
@@ -48,10 +49,10 @@ def run_client():
                 "sensor_tempValue": temperature,
                 "sensor_humidityValue": humidity,
                 "sensor_unit": "Celsius and %",
-                "sensor_id": "abc123" # new: add sensor id
+                "sensor_id": "abc123"
             }
     
-            # convert the sensor data to JSON format
+            # store the sensor data to JSON format
             sensor_json = json.dumps(tempHumidSensor_data)
         
             print(colored("Sensor data to server: ","blue"), "Data:", sensor_json)
@@ -64,16 +65,10 @@ def run_client():
             if len(iv) != 16:
                 raise ValueError("IV must be 16 bytes long")
 
-            # create the AES cipher object
+            # create the AES cipher object ensuring its 16 bytes long and encrypt the data before sending the data to the server
             cipher = AES.new(key, AES.MODE_CBC, iv)
-
-            # pad the sensor data to a multiple of 16 bytes
             padded_data = pad(sensor_json.encode(), AES.block_size)
-    
-            # encrypt the padded sensor data using AES-CBC
             encrypted_data = cipher.encrypt(padded_data)
-        
-            # send the encrypted sensor data to the server
             s.sendall(encrypted_data)
             print(colored("Encrypted sensor data sent: ", "blue"), "Data:", encrypted_data)
 
@@ -81,16 +76,10 @@ def run_client():
             encrypted_response = s.recv(1024)
             print(colored("Received encrypted server response: ", "blue"), "Response:", encrypted_response)
     
-            # create a new AES cipher object for decrypting the response data
+            # create a new AES cipher object for decrypting the response data and recode the encrypted data recieved from the server
             decrypt_cipher = AES.new(key, AES.MODE_CBC, iv)
-    
-            # decrypt the response using AES-CBC
             decrypted_response = decrypt_cipher.decrypt(encrypted_response)
-
-            # unpad the decrypted response
             unpadded_response = unpad(decrypted_response, AES.block_size)
-        
-            # convert the response from bytes to string format
             response = unpadded_response.decode()
     
             print(colored("Decrypted Response from server: ", "blue"), "Response:", response)
@@ -101,21 +90,19 @@ def run_client():
         
         except socket.error as e:
             print(f"Socket error occurred: {e}")
-        
+
+# Run the client sensor 
 if __name__ == '__main__':
-    # Run the client sensor
+  
         
     # Set DSCP Value = AF32
     DSCP = 0x70
 
-    # create a socket object
+    # create a socket object and set the TOS marking for the socket
     s = socket.socket()
-    # set the TOS marking for the socket
     s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
-    # get local machine name
+  
     host = socket.gethostname()
-
-    # define the port on which you want to connect
     port = 12345
 
     # connect to the server on local computer
@@ -126,6 +113,8 @@ if __name__ == '__main__':
     context.verify_mode = ssl.CERT_NONE
 
     s = context.wrap_socket(s, server_hostname=host)
+    
+    #Open connection
     s.connect((host, port))
     print(colored("Connected to server", "blue"), host, "port",port,".")
         
