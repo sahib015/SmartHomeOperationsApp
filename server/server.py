@@ -69,7 +69,7 @@ def run_server():
 
         # create a socket object, Timeout and set TOS field in the IP header of the network packet
         s = socket.socket()
-        s.settimeout(10)
+        s.settimeout(300)
         s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
       
         host = socket.gethostname()
