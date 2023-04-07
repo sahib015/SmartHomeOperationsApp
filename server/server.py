@@ -67,7 +67,7 @@ def run_server():
         # Set DSCP Value = EF
         DSCP = 0xB8
 
-        # create a socket object, Timeout and set TOS field in the IP header of the network packet
+        # create a socket object and set TOS field in the IP header of the network packet
         s = socket.socket()
         s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
       
@@ -77,9 +77,6 @@ def run_server():
         # bind the socket to a public host and port
         s.bind((host, port))
         
-        # set socket timtout
-        s.settimeout(30)
-
         # listen for any incoming connections
         s.listen(5)
         print("Server is running on:", socket.gethostbyname(host), "port", port)
@@ -104,8 +101,5 @@ def run_server():
         
     except socket.error as e:
         print(f"Socket error occurred: {addr} {e}")
-    
-    except socket.timeout:
-        print(f"Socket timed out: {addr}")
         
 run_server()
