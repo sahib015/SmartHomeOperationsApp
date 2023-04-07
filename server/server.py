@@ -67,10 +67,10 @@ def run_server():
         # Set DSCP Value = EF
         DSCP = 0xB8
 
-        # create a socket object and set TOS field in the IP header of the network packet
+        # create a socket object, Timeout and set TOS field in the IP header of the network packet
         s = socket.socket()
+        s.settimeout(10)
         s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
-
       
         host = socket.gethostname()
         port = 12345
