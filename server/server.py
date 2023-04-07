@@ -69,7 +69,6 @@ def run_server():
 
         # create a socket object, Timeout and set TOS field in the IP header of the network packet
         s = socket.socket()
-        s.settimeout(300)
         s.setsockopt(socket.IPPROTO_IP, socket.IP_TOS, DSCP)
       
         host = socket.gethostname()
@@ -77,6 +76,9 @@ def run_server():
 
         # bind the socket to a public host and port
         s.bind((host, port))
+        
+        # set socket timtout
+        s.settimeout(30)
 
         # listen for any incoming connections
         s.listen(5)
@@ -102,5 +104,8 @@ def run_server():
         
     except socket.error as e:
         print(f"Socket error occurred: {addr} {e}")
+    
+    except socket.timeout:
+        print(f"Socket timed out: {addr}")
         
 run_server()
