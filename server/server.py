@@ -64,6 +64,9 @@ def handle_connection(client_socket, addr):
 
 def run_server():
     try:
+        # Application version ID
+        server_version = "20230417s01"
+
         # Set DSCP Value = EF
         DSCP = 0xB8
 
@@ -102,4 +105,5 @@ def run_server():
     except socket.error as e:
         print(f"Socket error occurred: {addr} {e}")
         
-run_server()
+if __name__ == '__main__':
+    run_server()

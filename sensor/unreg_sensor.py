@@ -96,7 +96,9 @@ def run_client():
    # Run the client sensor       
 if __name__ == '__main__':
  
-        
+    # Application version ID
+    client_version = "20230417c01"
+
     # Set DSCP Value = AF22
     DSCP = 0x50
 
