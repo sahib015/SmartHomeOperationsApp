@@ -62,5 +62,6 @@ The following mitigations should be considered for inclusion in the next SPRINT.
 We should remain mindful, that this system is more likely to be implemented in people’s homes, rather than an Enterprise with dedicated IT Staff and corresponding skillset. The complexity of any design must take this into consideration as demonstrated by Figure 1.
 
 ![Security_Triangle](/Security_Triangle.png "Figure 1.Security, Functionality and Useability Triangle")
+<br>
 **Figure 1-** Security, Functionality and Useability Triangle
 ## References
