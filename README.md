@@ -23,7 +23,7 @@ Once the virtual environment is activated install the following libraries (note 
 
 After the libraries have been installed, run the server application using the following commands. The server should start running before running the different sensors.
 * Type “python server.py”
-* "Type “python3 server.py” if having multiple versions of python. 
+* Type “python3 server.py” if having multiple versions of python. 
 
 ### Run the Different Sensors
  Using a new terminal, navigate to the sensor folder, and start the virtual environment on the same computer running server.py. 
@@ -62,5 +62,5 @@ The following mitigations should be considered for inclusion in the next SPRINT.
 We should remain mindful, that this system is more likely to be implemented in people’s homes, rather than an Enterprise with dedicated IT Staff and corresponding skillset. The complexity of any design must take this into consideration as demonstrated by Figure 1.
 
 ![Security_Triangle](/Security_Triangle.png "Figure 1.Security, Functionality and Useability Triangle")
-
+**Figure 1-** Security, Functionality and Useability Triangle
 ## References
