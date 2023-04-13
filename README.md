@@ -30,9 +30,10 @@
     *Type “python reg_sensor.py”, python unknown_sensor.py” and python unknown_sensor.py”
     *Type “python3 reg_sensor.py”, python3 ureg_sensor.py” and python3 unknown_sensor.py” if having multiple versions of python
 ## Identified Vulnerabilities with Mitigations
+
 ### IoT devices are vulnerable to a cyber-attack, and an attacker may fabricate, intercept, manipulate or interrupt transmitted data (Addullah et al, 2019).
-### The main security risks can be mitigated by encryption, and should be at the core of IoT (Abdullah et al, 2019). 
-### Addressing vulnerabilities of identity theft, man-in-the-middle attacks and distributed denial of service attacks, the application has implemented the following mitigations - 
+    The main security risks can be mitigated by encryption, and should be at the core of IoT (Abdullah et al, 2019). 
+    Addressing vulnerabilities of identity theft, man-in-the-middle attacks and distributed denial of service attacks, the application has implemented the following mitigations - 
     * Message Encryption - Data being transmitted is secure.
     * SSL/TLS Communication – Using Certificates, secures the connection between the client and the server to avoid data tampering. 
     * The server authenticates by sensor type and sensor ID - This ensures registered sensors get a valid response from the server and that the data remains secure
@@ -57,4 +58,4 @@
 
 ![Security_Triangle](/Security_Triangle.png "Figure 1.Security, Functionality and Useability Triangle")
 
-##References
+## References
