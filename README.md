@@ -2,37 +2,39 @@
 ## Readme- Secure Software Development Assessment- Code 
 
 ## Introduction
-### The main threat in IoT smart homes, is due to the distributed nature of the system, and the connectivity between processes and devices. The connectivity can be unreliable and open to attack (Taivalsaari et al, 2018).
+The main threat in IoT smart homes, is due to the distributed nature of the system, and the connectivity between processes and devices. The connectivity can be unreliable and open to attack (Taivalsaari et al, 2018).
     
     **Hypothesis: How to secure the connectivity between processes in a distributed IoT smart home to prevent attacks such as injection attacks, message modification, man-in-the-middle attacks and DoS attacks.**
     
 ## Usage Instructions 
 ### **How to run the system**
 ### **Run the Server**
-### Using a terminal, navigate to the server folder, and start the virtual environment on your preferred computer. 
+ Using a terminal, navigate to the server folder, and start the virtual environment on your preferred computer. 
     *“SmartHomeOperationsApp-Windows/server” 
     *“SmartHomeOperationsApp-Mac/server” 
-### The virtual environments are created and can be activated using the commands.
+ The virtual environments are created and can be activated using the commands.
     * Type “Scripts\activate” – Windows 
     * Type “source bin/activate” – Mac 
-### Once the virtual environment is activated install the following libraries (note this needs to be installed on both virtual environments (server and sensor)
+Once the virtual environment is activated install the following libraries (note this needs to be installed on both virtual environments (server and sensor)
     *Pycryptodome – pip install pycryptodome
     *Termcolor – pip install termcolor
-### After the libraries have been installed, run the server application using the following commands. The server should start running before running the different sensors.
+After the libraries have been installed, run the server application using the following commands. The server should start running before running the different sensors.
     *Type “python server.py”
     "Type “python3 server.py” if having multiple versions of python. 
-### **Run the Different Sensors**
-### Using a new terminal, navigate to the sensor folder, and start the virtual environment on the same computer running server.py. 
+### Run the Different Sensors
+ Using a new terminal, navigate to the sensor folder, and start the virtual environment on the same computer running server.py. 
     *“SmartHomeOperationsApp-Windows/sensor” 
     *“SmartHomeOperationsApp-Mac/sensor” 
-### Ensure the libraries have been installed- refer to the libraries above to install on the sensor virtual environment. 
-### After the libraries have been installed run the sensor application using the following commands.
+ Ensure the libraries have been installed- refer to the libraries above to install on the sensor virtual environment. 
+After the libraries have been installed run the sensor application using the following commands.
     *Type “python reg_sensor.py”, python unknown_sensor.py” and python unknown_sensor.py”
     *Type “python3 reg_sensor.py”, python3 ureg_sensor.py” and python3 unknown_sensor.py” if having multiple versions of python
 ## Identified Vulnerabilities with Mitigations
 
-### IoT devices are vulnerable to a cyber-attack, and an attacker may fabricate, intercept, manipulate or interrupt transmitted data (Addullah et al, 2019).
+    IoT devices are vulnerable to a cyber-attack, and an attacker may fabricate, intercept, manipulate or interrupt transmitted data (Addullah et al, 2019).
+    
     The main security risks can be mitigated by encryption, and should be at the core of IoT (Abdullah et al, 2019). 
+    
     Addressing vulnerabilities of identity theft, man-in-the-middle attacks and distributed denial of service attacks, the application has implemented the following mitigations - 
     * Message Encryption - Data being transmitted is secure.
     * SSL/TLS Communication – Using Certificates, secures the connection between the client and the server to avoid data tampering. 
@@ -48,13 +50,13 @@
 * Code includes comments.
 
 ## Proposed scope for next SPRINT
-### The following mitigations should be considered for inclusion in the next SPRINT.
+The following mitigations should be considered for inclusion in the next SPRINT.
     * Additional authentication including certificates and passwords between the IoT devices and Server
     * Use of random ports for communication
     * A regular process which checks for firmware updates ensuring the latest security patches are deployed. 
 
 ## Design Considerations
-### We should remain mindful, that this system is more likely to be implemented in people’s homes, rather than an Enterprise with dedicated IT Staff and corresponding skillset. The complexity of any design must take this into consideration as demonstrated by Figure 1.
+ We should remain mindful, that this system is more likely to be implemented in people’s homes, rather than an Enterprise with dedicated IT Staff and corresponding skillset. The complexity of any design must take this into consideration as demonstrated by Figure 1.
 
 ![Security_Triangle](/Security_Triangle.png "Figure 1.Security, Functionality and Useability Triangle")
 
