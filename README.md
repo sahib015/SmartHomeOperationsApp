@@ -65,3 +65,20 @@ We should remain mindful, that this system is more likely to be implemented in p
 <br>
 **Figure 1-** Security, Functionality and Useability Triangle
 ## References
+* Abdullah, T,. Ali, W,. Malebary, S,. Ahmed, Adel,. (2019) A Review of Cyber Security Challenges, Attacks and Solutions for Internet of Things Based Smart Home. International Journal of Computer Science and Network Security.  
+
+* Magnusson, A. (2023). Man-in-the-Middle (MITM) Attack: Definition, Examples & More. [Online]. Strongdm. Available at: https://www.strongdm.com/blog/man-in-the-middle-attack#:~:text=(MITM)%20Attack%3F-,A%20man%2Din%2Dth [Accessed 10 April 2023].
+
+* McAfee. (2023). How to Secure Your Smart Home: A Step-by-Step Guide. [Online]. McAfee. Available at: https://www.mcafee.com/learn/how-to-secure-your-smart-home-a-step-by-step-guide/ [Accessed 10 April 2023].
+
+* Mundle, K. (2019). Home Smart IoT Home: Domesticating the Internet of Things. [Online]. Designers. Available at: https://www.toptal.com/designers/interactive/smart-home-domestic-internet-of-things [Accessed 10 April 2023].
+
+* Paloalto. (No date). What is a denial of service attack (DoS) ?. [Online]. Paloalto. Available at: https://www.paloaltonetworks.com/cyberpedia/what-is-a-denial-of-service-attack-dos#:~:text=A%20Denia [Accessed 10 April 2023].
+
+* Taivalsaari, A,. Mikkonen, T,. (2018) On the Development of IoT Systems. Third International Conference on Fog and Mobile Edge Computing (FMEC).
+
+* TechTarget Contributor. (2023). active attack. [Online]. TechTarget. Available at: https://www.techtarget.com/whatis/definition/active-attack#:~:text=An%20active%20attack%20is%20a,dev [Accessed 10 April 2023].
+
+* York, D. (2010). Eavesdropping and Modification. In: Trammell, D. (Ed). Seven Deadliest Unified Communications Attacks. USA: Syngress. pp.41-69.
+
+* Zscaler. (2023). OOWASP Top 10: Injection Attacks, Explained. [Online]. Zscaler. Available at: https://www.zscaler.com/blogs/product-insights/owasp-top-10-injection-attacks-explained?_bt=64965741 [Accessed 10 April 2023].
